@@ -5,13 +5,14 @@
 @endsection
 
 @section('title')
-    Inicio
+    sdadasdas
 @endsection
 
 @section('content')
+
     <div class="row">
 
-
+        
 
     </div>
 

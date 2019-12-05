@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('administrador/index');
 });
+
+Route::get('/supervisor_puntos', function () {
+    return view('supervisor_puntos/index');
+});
