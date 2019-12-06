@@ -16,5 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/supervisor_puntos', function () {
-    return view('supervisor_puntos/index');
+    return view('auditoria/index');
 });
+
+Route::resource('auditoria', 'AuditController');

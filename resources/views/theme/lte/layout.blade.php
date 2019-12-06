@@ -47,7 +47,7 @@
             <!-- inicio aside -->
             @include("theme/$theme/aside")
 
-            <!-- fin aside -->
+            <!-- fin aside --> 
 
 
             <div class="content-wrapper">

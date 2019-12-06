@@ -13,6 +13,20 @@ use Illuminate\Http\Request;
 |
 */
 
+
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+/*Route::get('Auditoria', function(){
+    //aqui se hace la carga de el lado del servidor
+    //return App\Audit::all();
+    return datatables()
+        ->eloquent(App\Audit::query())
+        ->toJson;
+});*/
+

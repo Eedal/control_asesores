@@ -4,7 +4,6 @@
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -23,5 +22,22 @@ $factory->define(User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
+    ];
+});
+
+
+$factory->define(App\Audit::class, function (Faker $faker) {
+    return [
+        'id' => rand(233433, 432388),
+        'sticker' => rand(0, 1),
+        'cumple_frecuencia' => rand(0, 1),
+        'dms' => rand(0, 1),
+        'producto_recarga_tigo' => rand(0, 1),
+        'producto_recarga_mayor_venta' => rand(0, 3),
+        'producto_chip_mayor_venta' => rand(0, 3),
+        'producto_portabilidad_mayor_venta' => rand(0, 3),
+        
+        
+
     ];
 });
