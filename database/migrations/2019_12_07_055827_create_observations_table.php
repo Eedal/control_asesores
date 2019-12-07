@@ -15,7 +15,9 @@ class CreateObservationsTable extends Migration
     {
         Schema::create('observations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+
+            $table->text('observaciones')->nullable();
+            //$table->timestamps();
         });
     }
 

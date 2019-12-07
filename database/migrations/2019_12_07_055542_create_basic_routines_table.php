@@ -9,13 +9,19 @@ class CreateBasicRoutinesTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
+     * @return void 
      */
     public function up()
     {
         Schema::create('basic_routines', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->bigIncrements('id');
-            $table->timestamps();
+            
+            $table->Boolean('sticker')->nullable(); 
+            $table->Boolean('cumple_frecuencia')->nullable();
+            $table->Boolean('dms')->nullable();
+            
         });
     }
 

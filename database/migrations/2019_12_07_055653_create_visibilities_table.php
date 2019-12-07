@@ -14,8 +14,14 @@ class CreateVisibilitiesTable extends Migration
     public function up()
     {
         Schema::create('visibilities', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->bigIncrements('id'); 
+            
+            $table->Boolean('estado')->nullable();
+            $table->Boolean('vigencia')->nullable();
+            $table->Boolean('posicion')->nullable();
+            $table->Boolean('asociacion')->nullable();
+            $table->Boolean('r_visual_o_primera_posicion')->nullable();
+            //$table->timestamps();
         });
     }
 

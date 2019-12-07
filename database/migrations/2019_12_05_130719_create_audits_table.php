@@ -33,7 +33,7 @@ class CreateAuditsTable extends Migration
             $table->Boolean('cumple_frecuencia')->nullable();
             $table->Boolean('dms')->nullable();
 
-
+ 
             $table->Boolean('producto_recarga_tigo')->nullable();
             $table->Boolean('producto_recarga_competencia')->nullable();
 

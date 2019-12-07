@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Procuct;
+use App\Product;
 use Illuminate\Http\Request;
 
-class ProcuctController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ProcuctController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Procuct  $procuct
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Procuct $procuct)
+    public function show(Product $product)
     {
         //
     }
@@ -52,10 +52,10 @@ class ProcuctController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Procuct  $procuct
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Procuct $procuct)
+    public function edit(Product $product)
     {
         //
     }
@@ -64,10 +64,10 @@ class ProcuctController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Procuct  $procuct
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Procuct $procuct)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -75,10 +75,10 @@ class ProcuctController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Procuct  $procuct
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Procuct $procuct)
+    public function destroy(Product $product)
     {
         //
     }

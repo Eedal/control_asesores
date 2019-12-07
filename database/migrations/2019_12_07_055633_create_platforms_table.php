@@ -12,10 +12,17 @@ class CreatePlatformsTable extends Migration
      * @return void
      */
     public function up()
-    {
+    { 
         Schema::create('platforms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            
+            $table->Boolean('recarga_o_paquete')->nullable();
+            $table->Boolean('activador_chip')->nullable();
+            $table->Boolean('reportes')->nullable();
+
+            $table->Boolean('tigo_shop')->nullable();
+            $table->Boolean('tigo_trainer')->nullable();
+            //$table->timestamps();
         });
     }
 

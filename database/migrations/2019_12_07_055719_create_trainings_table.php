@@ -15,7 +15,13 @@ class CreateTrainingsTable extends Migration
     {
         Schema::create('trainings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            
+            $table->Boolean('oferta_prepago')->nullable();
+            $table->Boolean('oferta_pospago')->nullable();
+            $table->Boolean('portabilidad_prepago_o_pospago')->nullable();
+            $table->Boolean('paq_focos')->nullable();
+            
+            //$table->timestamps();
         });
     }
 
