@@ -14,15 +14,17 @@ class CreateObservationsTable extends Migration
     public function up()
     {
         Schema::create('observations', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            
             $table->bigIncrements('id');
- 
+            $table->text('observaciones')->nullable();
+            
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->nullable();
 
             $table->unsignedBigInteger('point_sale_id')->nullable();
             $table->foreign('point_sale_id')->references('id')->on('point_sales')->nullable();
-
-            $table->text('observaciones')->nullable();
+            
             $table->timestamps();
         });
     }

@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
+            
             $table->bigIncrements('id');
             $table->integer('cedula');
             $table->string('usuario')->nullable();
@@ -31,17 +32,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('phone');
 
-
-
             $table->unsignedBigInteger('rol_id')->nullable();
             $table->foreign('rol_id')->references('id')->on('rols')->nullable();
-
-            
-
-
-                
-                
-            
+  
+            $table->timestamps();
         });
     }
 

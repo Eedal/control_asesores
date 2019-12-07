@@ -14,7 +14,14 @@ class CreateVisibilitiesTable extends Migration
     public function up()
     {
         Schema::create('visibilities', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            
             $table->bigIncrements('id'); 
+            $table->Boolean('estado')->nullable();
+            $table->Boolean('vigencia')->nullable();
+            $table->Boolean('posicion')->nullable();
+            $table->Boolean('asociacion')->nullable();
+            $table->Boolean('r_visual_o_primera_posicion')->nullable();
             
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->nullable();
@@ -22,11 +29,6 @@ class CreateVisibilitiesTable extends Migration
             $table->unsignedBigInteger('point_sale_id')->nullable();
             $table->foreign('point_sale_id')->references('id')->on('point_sales')->nullable();
 
-            $table->Boolean('estado')->nullable();
-            $table->Boolean('vigencia')->nullable();
-            $table->Boolean('posicion')->nullable();
-            $table->Boolean('asociacion')->nullable();
-            $table->Boolean('r_visual_o_primera_posicion')->nullable();
             $table->timestamps();
         });
     }

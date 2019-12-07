@@ -15,15 +15,14 @@ class CreateCircuitsTable extends Migration
     {
         Schema::create('circuits', function (Blueprint $table) {
             $table->engine = 'InnoDB';
+
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->nullable();
 
-
-
-            //$table->timestamps();
+            $table->timestamps();
         });
         
     }
