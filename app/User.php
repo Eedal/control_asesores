@@ -38,6 +38,15 @@ class User extends Authenticatable
     ];
     public function rol()
     {
-        return $this->hasOne('App\Rol', 'id', 'rol_id');
+        return $this->belongsTo(Rol::class);
+        //return $this->hasOne('App\Rol', 'id', 'rol_id');
+    }
+
+    public function audits(){
+        return $this->hasMany(Audit::class);
+    }
+    
+    public function circuits(){
+        return $this->hasMany(Circuit::class);
     }
 }

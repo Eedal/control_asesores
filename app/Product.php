@@ -29,4 +29,8 @@ class Product extends Model
         'producto_portabilidad_mayor_venta_movistar_cantidad', 
         'producto_portabilidad_mayor_otros_tigo_cantidad', 
     ];
+
+    public function audit(){
+        return $this->hasOne(Audit::class);
+    }
 }

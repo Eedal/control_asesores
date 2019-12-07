@@ -13,4 +13,8 @@ class Another_factor extends Model
         'otros_factores_recibe_comisiones', 
         'estado_de_la_red',  
     ];
+    
+    public function audit(){
+        return $this->hasOne(Audit::class);
+    }
 }

@@ -12,4 +12,12 @@ class Circuit extends Model
         'id', 
         'name', 
     ];
-}
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function point_sales(){
+        return $this->hasMany(Point_sale::class);
+    }
+} 

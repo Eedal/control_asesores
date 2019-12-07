@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Audit;
 use Illuminate\Http\Request;
-
+use App\User;
+use App\Rol;
+use App\Circuit;
+use App\Point_sale;
+use App\Basic_routine;
 class AuditController extends Controller
 {
     /**
@@ -14,6 +18,16 @@ class AuditController extends Controller
      */
     public function index()
     {
+        //return Audit::where('id', '1')->get();
+        //return Audit::where('id', '1')->first();
+        //$auditoria = Audit::where('id', '3')->first();
+        //$punto = Point_sale::first();
+        //return Basic_routine::where('id', 1)->first();
+        $rutina_basica = Basic_routine::where('id', '2')->first();
+
+        //$auditoria = Audit::first();
+        return $rutina_basica->audit;
+        
         $CAMPOS_BASICOS = array(
             "ID" => "ID",
             "Fecha_creacion" => "Fecha_creacion",

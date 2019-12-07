@@ -15,4 +15,7 @@ class Platform extends Model
         'tigo_shop', 
         'tigo_trainer', 
     ];
+    public function audit(){
+        return $this->hasOne(Audit::class);
+    }
 }

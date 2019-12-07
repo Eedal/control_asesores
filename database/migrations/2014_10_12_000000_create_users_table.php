@@ -30,15 +30,11 @@ class CreateUsersTable extends Migration
             $table->string('nombre', 45)->nullable();
             $table->string('email')->unique();
             $table->string('phone');
-            $table->integer('rols_id')->unsigned();
-
-            $table->index(["rols_id"], 'fk_users_rols_idx');
 
 
-            $table->foreign('rols_id', 'fk_users_rols_idx')
-                ->references('id')->on('rols')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+
+            $table->unsignedBigInteger('rol_id')->nullable();
+            $table->foreign('rol_id')->references('id')->on('rols')->nullable();
 
             
 

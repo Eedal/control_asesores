@@ -12,4 +12,11 @@ class Point_sale extends Model
         'id', 
         'name', 
     ];
-}
+
+    public function circuit(){
+        return $this->belongsTo(Circuit::class);
+    }
+    public function audits(){
+        return $this->hasMany(Audit::class);
+    }
+} 

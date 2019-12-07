@@ -15,4 +15,7 @@ class Visibility extends Model
         'asociacion', 
         'r_visual_o_primera_posicion',
     ];
+    public function audit(){
+        return $this->hasOne(Audit::class);
+    }
 }

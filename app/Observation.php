@@ -11,4 +11,7 @@ class Observation extends Model
     protected $fillable = [
         'observaciones',
     ];
+    public function audit(){
+        return $this->hasOne(Audit::class);
+    }
 }

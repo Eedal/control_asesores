@@ -13,4 +13,8 @@ class Basic_routine extends Model
         'cumple_frecuencia', 
         'dms',  
     ];
+
+    public function audit(){
+        return $this->hasOne(Audit::class);
+    }
 }

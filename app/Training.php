@@ -14,4 +14,7 @@ class Training extends Model
         'portabilidad_prepago_o_pospago', 
         'paq_focos', 
     ];
+    public function audit(){
+        return $this->hasOne(Audit::class);
+    }
 }
