@@ -26,6 +26,7 @@ $factory->define(User::class, function (Faker $faker) {
 });
 
 
+
 $factory->define(App\Audit::class, function (Faker $faker) {
     return [
         'id' => rand(233433, 432388),
@@ -39,5 +40,26 @@ $factory->define(App\Audit::class, function (Faker $faker) {
         
         
 
+    ];
+});
+
+$factory->define(App\Circuit::class, function (Faker $faker) {
+    return [
+        'id' => rand(233433, 432388),
+        'name' => $faker->sentence(2),
+    ];
+});
+
+$factory->define(App\Point_sale::class, function (Faker $faker) {
+    return [
+        'id' => rand(233433, 432388),
+        'name' => $faker->sentence(2),
+    ];
+});
+
+$factory->define(App\Supervisor::class, function (Faker $faker) {
+    return [
+        'identification_card' => rand(100000, 999999),
+        'name' => $faker->sentence(2),
     ];
 });

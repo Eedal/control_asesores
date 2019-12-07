@@ -20,3 +20,4 @@ Route::get('/supervisor_puntos', function () {
 });
 
 Route::resource('auditoria', 'AuditController');
+Route::resource('punto', 'PointSaleController');

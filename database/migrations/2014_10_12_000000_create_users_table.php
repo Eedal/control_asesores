@@ -22,10 +22,14 @@ class CreateUsersTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->string('usuario', 45)->nullable();
+            $table->bigIncrements('id');
+            $table->integer('cedula');
+            $table->string('usuario')->nullable();
             $table->string('password', 45)->nullable();
+            $table->string('codigo_supervisor')->default(0);
             $table->string('nombre', 45)->nullable();
+            $table->string('email')->unique();
+            $table->string('phone');
             $table->integer('rols_id')->unsigned();
 
             $table->index(["rols_id"], 'fk_users_rols_idx');
@@ -35,6 +39,13 @@ class CreateUsersTable extends Migration
                 ->references('id')->on('rols')
                 ->onDelete('no action')
                 ->onUpdate('no action');
+
+            
+
+
+                
+                
+            
         });
     }
 

@@ -16,6 +16,7 @@ class AuditController extends Controller
     {
         $CAMPOS_BASICOS = array(
             "ID" => "ID",
+            "Fecha_creacion" => "Fecha_creacion",
             "Stick" => "Sticker",
             "Frecu" => "Frecuencia",
             "DMS" => "DMS",
@@ -25,7 +26,8 @@ class AuditController extends Controller
 
         );
         
-        $auditorias = Audit::all();
+        //$auditorias = Audit::all();
+        $auditorias = Audit::where("sticker", "1")->orderBy("id", "DESC")->get();
         return view("auditoria.index", compact(['auditorias', 'CAMPOS_BASICOS']));
     }
 
@@ -49,12 +51,12 @@ class AuditController extends Controller
     {
         
         
-        $validacion = $this->validate(request(),[
+        /*$validacion = $this->validate(request(),[
             'sticker' => 'required',
             'cumple_frecuencia' => 'required',
             'dms' => 'required',
             'producto_recarga_tigo' => 'required',
-        ]);
+        ]);*/
 
         
         $sticker = ($request->sticker) ? 1:0;
@@ -63,13 +65,37 @@ class AuditController extends Controller
         $producto_recarga_tigo = ($request->producto_recarga_tigo) ? 1:0;
         
         $producto_recarga_competencia = ($request->producto_recarga_competencia) ? 1:0;
+        
+
         $producto_recarga_mayor_venta = $request->producto_recarga_mayor_venta;
+        $producto_recarga_mayor_venta_tigo_cantidad = $request->producto_recarga_mayor_venta_tigo_cantidad;
+        $producto_recarga_mayor_venta_claro_cantidad = $request->producto_recarga_mayor_venta_claro_cantidad;
+        $producto_recarga_mayor_venta_movistar_cantidad = $request->producto_recarga_mayor_venta_movistar_cantidad;
+        $producto_recarga_mayor_venta_otros_cantidad = $request->producto_recarga_mayor_venta_otros_cantidad;
+
+
+
 
         $producto_chip_tigo = ($request->producto_chip_tigo) ? 1:0;
+        
+
         $producto_chip_competencia = ($request->producto_chip_competencia) ? 1:0;
+        $producto_chip_mayor_venta_tigo_cantidad = $request->producto_chip_mayor_venta_tigo_cantidad;
+        $producto_chip_mayor_venta_claro_cantidad = $request->producto_chip_mayor_venta_claro_cantidad;
+        $producto_chip_mayor_venta_movistar_cantidad = $request->producto_chip_mayor_venta_movistar_cantidad;
+        $producto_chip_mayor_venta_otros_cantidad = $request->producto_chip_mayor_venta_otros_cantidad;
+
+
+
         $producto_chip_mayor_venta = $request->producto_chip_mayor_venta;
 
         $producto_portabilidad_mayor_venta = $request->producto_portabilidad_mayor_venta;
+
+        $producto_portabilidad_mayor_venta_tigo_cantidad = $request->producto_portabilidad_mayor_venta_tigo_cantidad;
+        $producto_portabilidad_mayor_venta_claro_cantidad = $request->producto_portabilidad_mayor_venta_claro_cantidad;
+        $producto_portabilidad_mayor_venta_movistar_cantidad = $request->producto_portabilidad_mayor_venta_movistar_cantidad;
+        $producto_portabilidad_mayor_otros_tigo_cantidad = $request->producto_portabilidad_mayor_otros_tigo_cantidad;
+
 
         $recarga_o_paquete = ($request->recarga_o_paquete) ? 1:0;
         $activador_chip = ($request->activador_chip) ? 1:0;
@@ -114,10 +140,27 @@ class AuditController extends Controller
             "producto_recarga_tigo" => $producto_recarga_tigo,
             "producto_recarga_competencia" => $producto_recarga_competencia,
             "producto_recarga_mayor_venta" => $producto_recarga_mayor_venta,
+
+            "producto_recarga_mayor_venta_tigo_cantidad" => $producto_recarga_mayor_venta_tigo_cantidad,
+            "producto_recarga_mayor_venta_claro_cantidad" => $producto_recarga_mayor_venta_claro_cantidad,
+            "producto_recarga_mayor_venta_movistar_cantidad" => $producto_recarga_mayor_venta_movistar_cantidad,
+            "producto_recarga_mayor_venta_otros_cantidad" => $producto_recarga_mayor_venta_otros_cantidad,
+
             "producto_chip_tigo" => $producto_chip_tigo,
             "producto_chip_competencia" => $producto_chip_competencia,
             "producto_chip_mayor_venta" => $producto_chip_mayor_venta,
+            "producto_chip_mayor_venta_tigo_cantidad" => $producto_chip_mayor_venta_tigo_cantidad,
+            "producto_chip_mayor_venta_claro_cantidad" => $producto_chip_mayor_venta_claro_cantidad,
+            "producto_chip_mayor_venta_movistar_cantidad" => $producto_chip_mayor_venta_movistar_cantidad,
+            "producto_chip_mayor_venta_otros_cantidad" => $producto_chip_mayor_venta_otros_cantidad,
+
             "producto_portabilidad_mayor_venta" => $producto_portabilidad_mayor_venta,
+            "producto_portabilidad_mayor_venta_tigo_cantidad" => $producto_portabilidad_mayor_venta_tigo_cantidad,
+            "producto_portabilidad_mayor_venta_claro_cantidad" => $producto_portabilidad_mayor_venta_claro_cantidad,
+            "producto_portabilidad_mayor_venta_movistar_cantidad" => $producto_portabilidad_mayor_venta_movistar_cantidad,
+            "producto_portabilidad_mayor_otros_tigo_cantidad" => $producto_portabilidad_mayor_otros_tigo_cantidad,
+
+
             "recarga_o_paquete" => $recarga_o_paquete,
             "activador_chip" => $activador_chip,
             "reportes" => $reportes,
@@ -142,6 +185,7 @@ class AuditController extends Controller
 
         $CAMPOS_BASICOS = array(
             "ID" => "ID",
+            "Fecha_creacion" => "Fecha_creacion",
             "Stick" => "Sticker",
             "Frecu" => "Frecuencia",
             "DMS" => "DMS",
@@ -165,6 +209,7 @@ class AuditController extends Controller
     {
         $CAMPOS_BASICOS = array(
             "ID" => "ID",
+            "Fecha_creacion" => "Fecha_creacion",
             "Stick" => "Sticker",
             "Frecu" => "Frecuencia",
             "DMS" => "DMS",

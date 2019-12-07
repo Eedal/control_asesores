@@ -4,7 +4,10 @@
     <link rel="stylesheet" href="{{asset("assets/$theme/css/smart_wizard.css")}}">
 @endsection
 @section('content')
-<a href="{{ route('auditoria.index') }}" class="btn btn-success pull-right">Listado</a>
+
+<a href="{{ route('auditoria.index') }}" class="btn btn-success" style="margin-left: 15px">Listado</a>
+<button type="submit" class="btn btn-success pull-right" form="formulario_auditoria">Finalizar auditoria</button>
+
 <br>
 </br>
     <div class="container mt-5 mb-5">
@@ -22,7 +25,7 @@
             <div>
                 
                 <div id="step_rutina_basica">
-                    <form action="{{ route('auditoria.store') }}" method="POST">
+                    <form action="{{ route('auditoria.store') }}" method="POST" id="formulario_auditoria">
                         {{ csrf_field() }}
                         <div class="form-group form-check">
                             <input type="checkbox" class="form-check-input" id="sticker" name="sticker">
@@ -36,7 +39,7 @@
                             <input type="checkbox" class="form-check-input" id="dms" name="dms">
                             <label class="form-check-label" for="dms">DMS</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Finalizar auditoria</button>
+                        <!--<button type="submit" class="btn btn-primary">Finalizar auditoria</button>-->
 
                     
                 </div>
@@ -112,7 +115,7 @@
                                     <label class="form-check-label" for="producto_chip_mayor_venta_claro">
                                         Claro
                                     </label>
-                                    <input type="number" name="producto_chip_mayor_venta_tigo_cantidad" id="producto_chip_mayor_venta_tigo_cantidad">
+                                    <input type="number" name="producto_chip_mayor_venta_claro_cantidad" id="producto_chip_mayor_venta_claro_cantidad">
 
                                 </div>
                                 <div class="form-check">
@@ -120,7 +123,7 @@
                                     <label class="form-check-label" for="producto_chip_mayor_venta_movistar">
                                         Movistar
                                     </label>
-                                    <input type="number" name="producto_chip_mayor_venta_tigo_cantidad" id="producto_chip_mayor_venta_tigo_cantidad">
+                                    <input type="number" name="producto_chip_mayor_venta_movistar_cantidad" id="producto_chip_mayor_venta_movistar_cantidad">
 
                                 </div>
                                 <div class="form-check">
@@ -128,7 +131,7 @@
                                     <label class="form-check-label" for="producto_chip_mayor_venta_otros">
                                         Otros
                                     </label>
-                                    <input type="number" name="producto_chip_mayor_venta_tigo_cantidad" id="producto_chip_mayor_venta_tigo_cantidad">
+                                    <input type="number" name="producto_chip_mayor_venta_otros_cantidad" id="producto_chip_mayor_venta_otros_cantidad">
 
                                 </div>
                             </div>
@@ -147,7 +150,7 @@
                                     <label class="form-check-label" for="producto_portabilidad_mayor_venta_claro">
                                         Claro
                                     </label>
-                                    <input type="number" name="producto_portabilidad_mayor_venta_tigo_cantidad" id="producto_portabilidad_mayor_venta_tigo_cantidad">
+                                    <input type="number" name="producto_portabilidad_mayor_venta_claro_cantidad" id="producto_portabilidad_mayor_venta_claro_cantidad">
 
                                 </div>
                                 <div class="form-check">
@@ -155,7 +158,7 @@
                                     <label class="form-check-label" for="producto_portabilidad_mayor_venta_movistar">
                                         Movistar
                                     </label>
-                                    <input type="number" name="producto_portabilidad_mayor_venta_tigo_cantidad" id="producto_portabilidad_mayor_venta_tigo_cantidad">
+                                    <input type="number" name="producto_portabilidad_mayor_venta_movistar_cantidad" id="producto_portabilidad_mayor_venta_movistar_cantidad">
 
                                 </div>
                                 <div class="form-check">
@@ -163,7 +166,7 @@
                                     <label class="form-check-label" for="producto_portabilidad_mayor_venta_otros">
                                         Otros
                                     </label>
-                                    <input type="number" name="producto_portabilidad_mayor_venta_tigo_cantidad" id="producto_portabilidad_mayor_venta_tigo_cantidad">
+                                    <input type="number" name="producto_portabilidad_mayor_otros_tigo_cantidad" id="producto_portabilidad_mayor_otros_tigo_cantidad">
 
                                 </div>
                             </div>
@@ -280,7 +283,7 @@
                         </div>
                         
                     </div>
-                    <button type="submit" class="btn btn-primary">Finalizar auditoria</button>
+                    <!--<button type="submit" class="btn btn-primary">Finalizar auditoria</button>-->
                     </form>
                 </div>
 

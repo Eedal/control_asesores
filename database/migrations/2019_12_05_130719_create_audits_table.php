@@ -14,8 +14,21 @@ class CreateAuditsTable extends Migration
     public function up()
     {
         Schema::create('audits', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->dateTime('create_date')->nullable();
+
+
+            //$table->integer('point_sale_id')->unsigned();
+            //$table->foreign('point_sale_id')->references('id')->on('point_sales');
+            
+            $table->unsignedBigInteger('point_sale_id')->nullable();
+            $table->foreign('point_sale_id')->references('id')->on('point_sales')->nullable();
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->nullable();
+    
+
             $table->Boolean('sticker')->nullable(); 
             $table->Boolean('cumple_frecuencia')->nullable();
             $table->Boolean('dms')->nullable();
@@ -25,12 +38,31 @@ class CreateAuditsTable extends Migration
             $table->Boolean('producto_recarga_competencia')->nullable();
 
             $table->integer('producto_recarga_mayor_venta')->nullable();
-            $table->Boolean('producto_chip_tigo')->nullable();
-            $table->Boolean('producto_chip_competencia')->nullable();
+            $table->integer('producto_recarga_mayor_venta_tigo_cantidad')->nullable();
+            $table->integer('producto_recarga_mayor_venta_claro_cantidad')->nullable();
+            $table->integer('producto_recarga_mayor_venta_movistar_cantidad')->nullable();
+            $table->integer('producto_recarga_mayor_venta_otros_cantidad')->nullable();
             
 
+
+
+            $table->Boolean('producto_chip_tigo')->nullable();
+            $table->Boolean('producto_chip_competencia')->nullable();
             $table->integer('producto_chip_mayor_venta')->nullable();
+            $table->integer('producto_chip_mayor_venta_tigo_cantidad')->nullable();
+            $table->integer('producto_chip_mayor_venta_claro_cantidad')->nullable();
+            $table->integer('producto_chip_mayor_venta_movistar_cantidad')->nullable();
+            $table->integer('producto_chip_mayor_venta_otros_cantidad')->nullable();
+            
+            
+            
+
+            
             $table->integer('producto_portabilidad_mayor_venta')->nullable();
+            $table->integer('producto_portabilidad_mayor_venta_tigo_cantidad')->nullable();
+            $table->integer('producto_portabilidad_mayor_venta_claro_cantidad')->nullable();
+            $table->integer('producto_portabilidad_mayor_venta_movistar_cantidad')->nullable();
+            $table->integer('producto_portabilidad_mayor_otros_tigo_cantidad')->nullable();
 
             $table->Boolean('recarga_o_paquete')->nullable();
             $table->Boolean('activador_chip')->nullable();

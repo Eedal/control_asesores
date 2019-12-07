@@ -3,17 +3,24 @@
 @section('styles')
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
     
+
+
+
 
 @endsection
 @section('content')
 <div class="row"> 
-    <div class="col-sm-8">
+    <div class="col-sm-12">
         <h2>Listado de auditorias</h2>
         <a href="{{ url('/auditoria/create') }}" class="btn btn-success pull-right">Nueva auditoria</a>
+        <br>
+        </br>
         @include('auditoria.fragment.info')
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
+        
             <thead>            
                 <tr>
                     @foreach($CAMPOS_BASICOS as $key => $value)            
@@ -23,9 +30,11 @@
                 </tr>
             </thead>
             <tbody>
+                
                 @foreach($auditorias as $auditoria)
                     <tr>
                         <td>{{ $auditoria->id }}</td>
+                        <td>{{ $auditoria->create_date }}</td>
                         <td>
                             @if($auditoria->sticker == 1)    
                                 Si
@@ -103,9 +112,7 @@
         </table>
     </div>
 
-    <div class="col-sm-4">
-        @include('auditoria.fragment.aside')
-    </div>
+    
 </div>
 
 @endsection
@@ -114,12 +121,21 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
-
+    <script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     
+
+
+
+
 
     <script>
         $(document).ready(function() {
-            $('#example').DataTable();
+            var table = $('#example').DataTable({
+                responsive: true
+            });
+            new $.fn.dataTable.FixedHeader( table );
         } );
     </script>
 @endsection
