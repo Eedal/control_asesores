@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CircuitsTableSeeder::class);
 
         $this->call(Point_salesTableSeeder::class);
-        $this->call(SupervisorsTableSeeder::class);
 
 
     }

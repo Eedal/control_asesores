@@ -56,10 +56,3 @@ $factory->define(App\Point_sale::class, function (Faker $faker) {
         'name' => $faker->sentence(2),
     ];
 });
-
-$factory->define(App\Supervisor::class, function (Faker $faker) {
-    return [
-        'identification_card' => rand(100000, 999999),
-        'name' => $faker->sentence(2),
-    ];
-});
