@@ -16,7 +16,6 @@ class CreateAuditsTable extends Migration
         Schema::create('audits', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->dateTime('create_date')->nullable();
 
 
             //$table->integer('point_sale_id')->unsigned();

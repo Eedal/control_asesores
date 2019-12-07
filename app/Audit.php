@@ -9,7 +9,17 @@ class Audit extends Model
     //public $timestamps = false;
 
     protected $fillable = [
-        'create_date', 
+        'point_sale_id',
+        'user_id',
+        'basic_routine_id',
+        'product_id',
+        'platform_id',
+        'visibility_id',
+        'training_id',
+        'another_factor_id',
+        'observation_id',
+        
+        /*'create_date', 
         'sticker', 
         'cumple_frecuencia', 
         'dms', 
@@ -49,6 +59,6 @@ class Audit extends Model
         'conoce_incentivos', 
         'otros_factores_recibe_comisiones', 
         'estado_de_la_red',  
-        'observaciones',
+        'observaciones',*/
     ];
 }
