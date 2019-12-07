@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Platform extends Model
 {
-    public $timestamps = false;
+    //public $timestamps = false;
 
     protected $fillable = [
         'recarga_o_paquete', 

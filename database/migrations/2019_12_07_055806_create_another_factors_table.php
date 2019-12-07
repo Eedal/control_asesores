@@ -16,10 +16,16 @@ class CreateAnotherFactorsTable extends Migration
         Schema::create('another_factors', function (Blueprint $table) {
             $table->bigIncrements('id');
             
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->nullable();
+
+            $table->unsignedBigInteger('point_sale_id')->nullable();
+            $table->foreign('point_sale_id')->references('id')->on('point_sales')->nullable();
+
             $table->Boolean('conoce_incentivos')->nullable();
             $table->integer('otros_factores_recibe_comisiones')->nullable();
             $table->Boolean('estado_de_la_red')->nullable();
-            //$table->timestamps();
+            $table->timestamps();
         });
     }
 

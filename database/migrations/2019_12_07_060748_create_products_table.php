@@ -16,6 +16,12 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
 
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->nullable();
+
+            $table->unsignedBigInteger('point_sale_id')->nullable();
+            $table->foreign('point_sale_id')->references('id')->on('point_sales')->nullable();
+
             $table->Boolean('producto_recarga_tigo')->nullable();
             $table->Boolean('producto_recarga_competencia')->nullable();
 
@@ -42,6 +48,9 @@ class CreateProductsTable extends Migration
             $table->integer('producto_portabilidad_mayor_venta_claro_cantidad')->nullable();
             $table->integer('producto_portabilidad_mayor_venta_movistar_cantidad')->nullable();
             $table->integer('producto_portabilidad_mayor_otros_tigo_cantidad')->nullable();
+
+            $table->timestamps();
+
         });
     }
 

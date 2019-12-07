@@ -29,7 +29,7 @@ $factory->define(User::class, function (Faker $faker) {
 
 $factory->define(App\Audit::class, function (Faker $faker) {
     return [
-        'id' => rand(233433, 432388),
+        /*'id' => rand(233433, 432388),
         'sticker' => rand(0, 1),
         'cumple_frecuencia' => rand(0, 1),
         'dms' => rand(0, 1),
@@ -37,7 +37,7 @@ $factory->define(App\Audit::class, function (Faker $faker) {
         'producto_recarga_mayor_venta' => rand(0, 3),
         'producto_chip_mayor_venta' => rand(0, 3),
         'producto_portabilidad_mayor_venta' => rand(0, 3),
-        
+        */
         
 
     ];
