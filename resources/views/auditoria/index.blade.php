@@ -16,6 +16,8 @@
     <div class="col-sm-12">
         <h2>Listado de auditorias</h2>
         <a href="{{ url('/auditoria/create') }}" class="btn btn-success pull-right">Nueva auditoria</a>
+        <a href="{{ route('audit.excel') }}" class="btn btn-success pull-right">Excel</a>
+
         <br>
         </br>
         @include('auditoria.fragment.info')
@@ -34,60 +36,26 @@
                 @foreach($auditorias as $auditoria)
                     <tr>
                         <td>{{ $auditoria->id }}</td>
-                        <td>{{ $auditoria->create_date }}</td>
+                        <td>{{ $auditoria->point_sale_id }}</td>
                         <td>
-                            @if($auditoria->sticker == 1)    
-                                Si
-                            @elseif($auditoria->sticker == 0)
-                                No
-                            @endif
+                            {{ $auditoria->user_id }}
                         </td>
                         <td>
-                            @if($auditoria->cumple_frecuencia == 1)    
-                                Si
-                            @elseif($auditoria->cumple_frecuencia == 0)
-                                No
-                            @endif
+                            {{ $auditoria->basic_routine_id }}
+                            
                         </td>
                         <td>
-                            @if($auditoria->dms == 1)    
-                                Si
-                            @elseif($auditoria->dms == 0)
-                                No
-                            @endif
+                        {{ $auditoria->product_id }}
+                            
                         </td>
                         <td>
-                            @if($auditoria->producto_recarga_mayor_venta == 0)    
-                                Tigo
-                            @elseif($auditoria->producto_recarga_mayor_venta == 1)
-                                Claro
-                            @elseif($auditoria->producto_recarga_mayor_venta == 2)
-                                Movistar
-                            @elseif($auditoria->producto_recarga_mayor_venta == 3)
-                                Otros
-                            @endif
+                            
                         </td>
                         <td>
-                            @if($auditoria->producto_chip_mayor_venta == 0)    
-                                Tigo
-                            @elseif($auditoria->producto_chip_mayor_venta == 1)
-                                Claro
-                            @elseif($auditoria->producto_chip_mayor_venta == 2)
-                                Movistar
-                            @elseif($auditoria->producto_chip_mayor_venta == 3)
-                                Otros
-                            @endif
+                           
                         </td>
                         <td>
-                            @if($auditoria->producto_portabilidad_mayor_venta == 0)    
-                                Tigo
-                            @elseif($auditoria->producto_portabilidad_mayor_venta == 1)
-                                Claro
-                            @elseif($auditoria->producto_portabilidad_mayor_venta == 2)
-                                Movistar
-                            @elseif($auditoria->producto_portabilidad_mayor_venta == 3)
-                                Otros
-                            @endif
+                           
                         </td>
                         <td>
                             <div class="row">

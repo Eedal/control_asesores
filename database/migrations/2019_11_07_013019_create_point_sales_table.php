@@ -17,10 +17,10 @@ class CreatePointSalesTable extends Migration
             $table->engine = 'InnoDB';
             
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
+            $table->string('name')->unique();
 
-            $table->unsignedBigInteger('circuit_id')->nullable();
-            $table->foreign('circuit_id')->references('id')->on('circuits')->nullable();
+            $table->unsignedBigInteger('circuit_id');
+            $table->foreign('circuit_id')->references('id')->on('circuits');
 
             $table->timestamps();
         });

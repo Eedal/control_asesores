@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCircuitsTable extends Migration
+class CreateZonesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,17 @@ class CreateCircuitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('circuits', function (Blueprint $table) {
+        Schema::create('zones', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->bigIncrements('id');
             $table->string('name');
-            
-            //$table->unsignedBigInteger('user_id')->nullable();
-            //$table->foreign('user_id')->references('id')->on('users')->nullable();
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->nullable();
 
             $table->timestamps();
         });
-        
     }
 
     /**
@@ -34,6 +33,6 @@ class CreateCircuitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('circuits');
+        Schema::dropIfExists('zones');
     }
 }

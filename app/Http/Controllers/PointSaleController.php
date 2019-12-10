@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Point_sale;
 use Illuminate\Http\Request;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\Point_salesImport;
+use App\Circuit;
+use App\User;
 class PointSaleController extends Controller
 {
     /**
@@ -14,6 +17,17 @@ class PointSaleController extends Controller
      */
     public function index()
     {
+        //return Circuit::where('name', 'Fugiat at quia.')->first()->id;
+        //$usuario = User::findOrFail(2);
+        //return $usuario->circuits;
+
+        $user = User::findOrFail(1);
+        
+        //return $user->circuits()->attach(2); //adjuntarle un circuito a un usuario
+        //return $user->circuits()->detach(2); //quitarle un circuito a un usuario
+        //$user->circuits()->sync(2); //para asegurarse que la misma asignacion no se repita una y otra vez
+
+        return $user->circuits;
         $CAMPOS_BASICOS = array(
             "ID" => "ID",
             "Name" => "Name",
@@ -87,5 +101,13 @@ class PointSaleController extends Controller
     public function destroy(Point_sale $point_sale)
     {
         //
+    }
+
+    public function importPoint_salesExcel(Request $request)
+    {
+        $file = $request->file('filePoint_sale');
+        Excel::import(new Point_salesImport, $file);
+
+        return back()->with('message', 'Importacion de r point completada ');
     }
 }

@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'cedula', 'usuario', 'password', 'codigo_supervisor', 'nombre', 'email', 'phone', 'rol_id',
     ];
 
     /**
@@ -36,6 +36,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     public function rol()
     {
         return $this->belongsTo(Rol::class);
@@ -46,7 +47,15 @@ class User extends Authenticatable
         return $this->hasMany(Audit::class);
     }
     
-    public function circuits(){
+    /*public function circuits(){
         return $this->hasMany(Circuit::class);
+    }*/
+
+    public function circuits(){
+        return $this->belongsToMany(Circuit::class);
+    }
+
+    public function zones(){
+        return $this->hasMany(Zone::class);
     }
 }

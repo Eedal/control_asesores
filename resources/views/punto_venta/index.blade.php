@@ -16,6 +16,41 @@
     <div class="col-sm-12">
         <h2>Listado de auditorias</h2>
         <a href="{{ url('/auditoria/create') }}" class="btn btn-success pull-right">Nueva auditoria</a>
+        <a href="{{ url('/auditoria.excel') }}" class="btn btn-success pull-right">Excel</a>
+
+        <form action="{{ route('rols.import.excel') }}" method="post" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            @if(Session::has('message'))
+                <p>{{ Session::get('message') }}</p>
+            @endif
+
+            <input type="file" name="file" id="">
+            <button>Importar roles</button>
+        </form>
+
+        <form action="{{ route('users.import.excel') }}" method="post" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            @if(Session::has('message'))
+                <p>{{ Session::get('message') }}</p>
+            @endif
+
+            <input type="file" name="fileUser" id="">
+            <button>Importar usuarios</button>
+        </form>
+
+
+        <form action="{{ route('point_sales.import.excel') }}" method="post" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            @if(Session::has('message'))
+                <p>{{ Session::get('message') }}</p>
+            @endif
+
+            <input type="file" name="filePoint_sale" id="">
+            <button>Importar r point</button>
+        </form>
+
+        
+
         <br>
         </br>
         @include('auditoria.fragment.info')

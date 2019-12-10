@@ -21,3 +21,14 @@ Route::get('/supervisor_puntos', function () {
 
 Route::resource('auditoria', 'AuditController');
 Route::resource('punto', 'PointSaleController');
+
+Route::get('auditoria.excel', 'AuditController@exportExcel')->name('audit.excel');
+
+Route::post('roles.excel', 'RolController@importRolsExcel')->name('rols.import.excel');
+
+Route::post('users.excel', 'UserController@importUsersExcel')->name('users.import.excel');
+
+Route::post('point_sales.excel', 'PointSaleController@importPoint_salesExcel')->name('point_sales.import.excel');
+
+
+

@@ -13,10 +13,14 @@ class Circuit extends Model
         'name', 
     ];
 
-    public function user(){
+    /*public function user(){
         return $this->belongsTo(User::class);
-    }
+    }*/
 
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
+    
     public function point_sales(){
         return $this->hasMany(Point_sale::class);
     }

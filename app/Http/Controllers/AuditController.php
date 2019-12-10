@@ -9,6 +9,9 @@ use App\Rol;
 use App\Circuit;
 use App\Point_sale;
 use App\Basic_routine;
+
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AuditsExport;
 class AuditController extends Controller
 {
     /**
@@ -23,10 +26,10 @@ class AuditController extends Controller
         //$auditoria = Audit::where('id', '3')->first();
         //$punto = Point_sale::first();
         //return Basic_routine::where('id', 1)->first();
-        $rutina_basica = Basic_routine::where('id', '2')->first();
+        //$rutina_basica = Basic_routine::where('id', '2')->first();
 
         //$auditoria = Audit::first();
-        return $rutina_basica->audit;
+        //return $rutina_basica->audit;
         
         $CAMPOS_BASICOS = array(
             "ID" => "ID",
@@ -40,9 +43,11 @@ class AuditController extends Controller
 
         );
         
-        //$auditorias = Audit::all();
-        $auditorias = Audit::where("sticker", "1")->orderBy("id", "DESC")->get();
+        $auditorias = Audit::all();
+        //$auditorias = Audit::where("sticker", "1")->orderBy("id", "DESC")->get();
         return view("auditoria.index", compact(['auditorias', 'CAMPOS_BASICOS']));
+
+
     }
 
     /**
@@ -272,5 +277,10 @@ class AuditController extends Controller
         $auditoria->delete();
         
         return back()->with('info', 'La auditoría fue eliminada');
+    }
+
+
+    public function exportExcel(){
+        return Excel::download(new AuditsExport, 'audit-list.xlsx');
     }
 }

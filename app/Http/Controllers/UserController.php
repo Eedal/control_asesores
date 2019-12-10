@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Rol;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\UsersImport;
 
-use App\Imports\RolsImport;
-class RolController extends Controller
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,10 +43,10 @@ class RolController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Rol  $rol
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Rol $rol)
+    public function show($id)
     {
         //
     }
@@ -54,10 +54,10 @@ class RolController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Rol  $rol
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rol $rol)
+    public function edit($id)
     {
         //
     }
@@ -66,10 +66,10 @@ class RolController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Rol  $rol
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rol $rol)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -77,19 +77,19 @@ class RolController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Rol  $rol
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rol $rol)
+    public function destroy($id)
     {
         //
     }
 
-    public function importRolsExcel(Request $request)
+    public function importUsersExcel(Request $request)
     {
-        $file = $request->file('file');
-        Excel::import(new RolsImport, $file);
+        $file = $request->file('fileUser');
+        Excel::import(new UsersImport, $file);
 
-        return back()->with('message', 'Importacion de roles completada ');
+        return back()->with('message', 'Importacion de usuarios completada ');
     }
 }

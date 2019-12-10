@@ -11,6 +11,7 @@ class Point_sale extends Model
     protected $fillable = [
         'id', 
         'name', 
+        'circuit_id'
     ];
 
     public function circuit(){

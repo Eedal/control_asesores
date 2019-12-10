@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Rol;
+use App\Zone;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
-use App\Imports\RolsImport;
-class RolController extends Controller
+class ZoneController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,10 +41,10 @@ class RolController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Rol  $rol
+     * @param  \App\Zone  $zone
      * @return \Illuminate\Http\Response
      */
-    public function show(Rol $rol)
+    public function show(Zone $zone)
     {
         //
     }
@@ -54,10 +52,10 @@ class RolController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Rol  $rol
+     * @param  \App\Zone  $zone
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rol $rol)
+    public function edit(Zone $zone)
     {
         //
     }
@@ -66,10 +64,10 @@ class RolController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Rol  $rol
+     * @param  \App\Zone  $zone
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rol $rol)
+    public function update(Request $request, Zone $zone)
     {
         //
     }
@@ -77,19 +75,11 @@ class RolController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Rol  $rol
+     * @param  \App\Zone  $zone
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rol $rol)
+    public function destroy(Zone $zone)
     {
         //
-    }
-
-    public function importRolsExcel(Request $request)
-    {
-        $file = $request->file('file');
-        Excel::import(new RolsImport, $file);
-
-        return back()->with('message', 'Importacion de roles completada ');
     }
 }
