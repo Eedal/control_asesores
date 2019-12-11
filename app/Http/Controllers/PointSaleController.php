@@ -21,13 +21,13 @@ class PointSaleController extends Controller
         //$usuario = User::findOrFail(2);
         //return $usuario->circuits;
 
-        $user = User::findOrFail(1);
+        //$user = User::findOrFail(1);
         
         //return $user->circuits()->attach(2); //adjuntarle un circuito a un usuario
         //return $user->circuits()->detach(2); //quitarle un circuito a un usuario
         //$user->circuits()->sync(2); //para asegurarse que la misma asignacion no se repita una y otra vez
 
-        return $user->circuits;
+        //return $user->circuits;
         $CAMPOS_BASICOS = array(
             "ID" => "ID",
             "Name" => "Name",

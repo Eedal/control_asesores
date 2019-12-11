@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Zone;
 use Illuminate\Http\Request;
+use App\Http\Requests\ZoneRequest;
+use App\User;
 
 class ZoneController extends Controller
 {
@@ -14,7 +16,15 @@ class ZoneController extends Controller
      */
     public function index()
     {
-        //
+        $zonas = Zone::all();
+        $CAMPOS_ZONA = array(
+            'id' => 'id',
+            'name' => 'name',
+            'department' => 'department',
+        );
+
+        return view('user.show_zones', compact('zonas', 'CAMPOS_ZONA'));
+    
     }
 
     /**
@@ -24,7 +34,9 @@ class ZoneController extends Controller
      */
     public function create()
     {
-        //
+        $id_de_los_supervisores = 3;
+        $supervisores = User::where('rol_id', $id_de_los_supervisores)->get();
+        return view('user.create_zone', compact('supervisores'));
     }
 
     /**
@@ -33,9 +45,18 @@ class ZoneController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(ZoneRequest $request)
+    {   
+        
+        //return $request;
+        $zone = new Zone;
+        $zone->department = $request->department;
+        $zone->name = $request->name;
+        $zone->user_id = $request->codigo_supervisor;
+
+        $zone->save();
+        return back();
+        
     }
 
     /**

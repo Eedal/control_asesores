@@ -11,9 +11,15 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('administrador/index');
-});
+});*/
+
+
+
+
+
+
 
 Route::get('/supervisor_puntos', function () {
     return view('auditoria/index');
@@ -29,6 +35,35 @@ Route::post('roles.excel', 'RolController@importRolsExcel')->name('rols.import.e
 Route::post('users.excel', 'UserController@importUsersExcel')->name('users.import.excel');
 
 Route::post('point_sales.excel', 'PointSaleController@importPoint_salesExcel')->name('point_sales.import.excel');
+ 
+
+//para la administracion
+Route::get('crear_zonas', 'UserController@crear_zonas');
+
+
+
+Route::resource('/user/crear_zonas', 'UserController@crear_zonas');
+
+Route::post('zones.create', 'ZoneController@store')->name('zones.create');
+
+Route::get('crear_usuario', function () {
+    return view('user/create_user');
+});
+Route::get('registro', 'UserController@register_user');
+Route::post('asesor.create', 'UserController@adviser_store')->name('adviser.store');
+
+
+Route::post('registro', 'UserController@store');
+
+
+//Toda la parte del administrador
+Route::resource('/', 'UserController');
+Route::resource('zonas', 'ZoneController');
+Route::get('usuarios', 'UserController@show_users');
+
+Route::get('usuario/{cedula}', 'UserController@show_user')->name('usuario.show');
+
+
 
 
 

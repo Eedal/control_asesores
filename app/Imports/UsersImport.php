@@ -13,7 +13,7 @@ class UsersImport implements ToModel
     * @return \Illuminate\Database\Eloquent\Model|null
     */
     public function model(array $row)
-    {
+    { 
         
         return new User([
             'cedula' => $row[0],

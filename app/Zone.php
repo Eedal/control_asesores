@@ -8,7 +8,8 @@ class Zone extends Model
 {
     protected $fillable = [
         'id', 
-        'nombre', 
+        'name', 
+        'department',
     ];
     
     public function user(){
