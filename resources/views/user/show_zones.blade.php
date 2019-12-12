@@ -42,7 +42,7 @@
                         <td>
                             <div class="row">
                                 <div class="col-md-4">
-                                <a href="" class="btn btn-link"><i class="fa fa-eye"></i></a>
+                                <a href="{{ route('zonas.show', $zona->id) }}" class="btn btn-link"><i class="fa fa-eye"></i></a>
 
                                 </div>
                                 <div class="col-md-4">

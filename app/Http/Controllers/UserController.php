@@ -7,6 +7,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
 use App\User;
 use App\Zone;
+use App\Rol;
+use Exception;
 use DB;
 class UserController extends Controller
 {
@@ -160,7 +162,7 @@ class UserController extends Controller
             'usuario' => 'usuario',
             'nombre' => 'nombre',
             'phone' => 'phone',
-            'rol' => 'Rol',
+            'rol' => 'Rol', 
         );
         return view('user.show_users', compact('usuarios', 'roles', 'CAMPOS_USUARIOS'));
 
@@ -168,6 +170,40 @@ class UserController extends Controller
 
     public function show_user($cedula){
         $usuario = User::where('cedula', $cedula)->first();
-        return view('user.show_user', compact('usuario'));
+        try{
+            $supervisor = User::where('cedula', $usuario->codigo_supervisor)->first()->nombre;
+        }catch(Exception $e){
+            $supervisor = "No tiene";
+        }
+        
+        return view('user.show_user', compact(['usuario', 'supervisor']));
+    }
+
+    public function edit_user($cedula){
+
+        $usuario = User::where('cedula', $cedula)->first();
+        $roles = Rol::all();
+        return view('user.edit_user', compact(['usuario', 'roles']));
+    }
+
+    public function update_user(Request $request, $cedula){
+        
+        $usuario = User::where('cedula', $cedula)->first();
+        //return $request->rol;
+        //$rol = Rol::where('nombre', $request->rol)->first();
+        //return $request->cedula;
+        //return $request->rol;
+        $usuario->usuario = $request->nombre;
+        
+        $usuario->nombre = $request->nombre;
+
+        $usuario->cedula = $request->cedula;
+        $usuario->phone = $request->phone;
+        $usuario->rol_id = $request->rol;
+        $usuario->email = $request->email;
+
+        $usuario->save();
+        return redirect('/usuarios');
+
     }
 }

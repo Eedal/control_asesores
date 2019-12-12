@@ -6,7 +6,7 @@ use App\Zone;
 use Illuminate\Http\Request;
 use App\Http\Requests\ZoneRequest;
 use App\User;
-
+use Exception;
 class ZoneController extends Controller
 {
     /**
@@ -65,9 +65,17 @@ class ZoneController extends Controller
      * @param  \App\Zone  $zone
      * @return \Illuminate\Http\Response
      */
-    public function show(Zone $zone)
+    public function show(Zone $zone, $id)
     {
-        //
+        $zona = Zone::find($id);
+        //return $zona->user_id;
+        try{
+            $supervisor = User::where('id', $zona->user_id)->first()->nombre;
+        }catch(Exception $e){
+            $supervisor = "No tiene";
+        }
+        //return $supervisor->nombre;
+        return view('user.show_zone', compact(['zona','supervisor']));
     }
 
     /**
@@ -76,9 +84,17 @@ class ZoneController extends Controller
      * @param  \App\Zone  $zone
      * @return \Illuminate\Http\Response
      */
-    public function edit(Zone $zone)
+    public function edit(Zone $zone, $id)
     {
-        //
+        $zona = Zone::find($id);
+        try{
+            $supervisor = User::where('id', $zona->user_id)->first()->nombre;
+        }catch(Exception $e){
+            $supervisor = "No tiene";
+        }
+        $id_de_los_supervisores = 3;
+        $supervisores = User::where('rol_id', $id_de_los_supervisores)->get();
+        return view('user.edit_zone', compact(['zona', 'supervisor', 'supervisores']));
     }
 
     /**
@@ -90,7 +106,7 @@ class ZoneController extends Controller
      */
     public function update(Request $request, Zone $zone)
     {
-        //
+        return "hola";
     }
 
     /**
@@ -102,5 +118,17 @@ class ZoneController extends Controller
     public function destroy(Zone $zone)
     {
         //
+    }
+
+
+    //La parte de la administracion
+    public function update_zone(Request $request, $id){
+        $zona = Zone::find($id);
+        $zona->name = $request->name;
+        $zona->department = $request->department;
+        $zona->user_id = $request->user_id;
+        $zona->save();
+        return redirect('/zonas');
+
     }
 }

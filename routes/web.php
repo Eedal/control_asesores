@@ -63,7 +63,14 @@ Route::get('usuarios', 'UserController@show_users');
 
 Route::get('usuario/{cedula}', 'UserController@show_user')->name('usuario.show');
 
+Route::get('usuario/{cedula}/edit', 'UserController@edit_user')->name('usuario.edit');
+Route::post('usuario/{cedula}', 'UserController@update_user')->name('usuario.update');
 
+Route::post('zonas/{id}', 'ZoneController@update_zone')->name('zone.update');
+
+
+
+Route::resource('circuitos', 'CircuitController');
 
 
 

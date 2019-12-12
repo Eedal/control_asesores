@@ -13,8 +13,8 @@ class CircuitController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+        return "Todos los circuitos";
     }
 
     /**

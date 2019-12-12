@@ -44,6 +44,8 @@
             </li>
             <li><a href="/zonas"><i class="fa fa-book"></i> <span>Zonas</span></a></li>
             <li><a href="/usuarios"><i class="fa fa-book"></i> <span>Usuarios</span></a></li>
+            <li><a href="/circuitos"><i class="fa fa-book"></i> <span>Circuitos</span></a></li>
+
 
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
