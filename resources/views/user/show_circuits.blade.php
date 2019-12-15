@@ -14,41 +14,8 @@
 @section('content')
 <div class="row"> 
     <div class="col-sm-12">
-        <h2>Listado de puntos</h2>
-        <a href="{{ url('/auditoria/create') }}" class="btn btn-success pull-right">Nueva auditoria</a>
-        <a href="{{ url('/auditoria.excel') }}" class="btn btn-success pull-right">Excel</a>
-
-        <form action="{{ route('rols.import.excel') }}" method="post" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            @if(Session::has('message'))
-                <p>{{ Session::get('message') }}</p>
-            @endif
-
-            <input type="file" name="file" id="">
-            <button>Importar roles</button>
-        </form>
-
-        <form action="{{ route('users.import.excel') }}" method="post" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            @if(Session::has('message'))
-                <p>{{ Session::get('message') }}</p>
-            @endif
-
-            <input type="file" name="fileUser" id="">
-            <button>Importar usuarios</button>
-        </form>
-
-
-        <form action="{{ route('point_sales.import.excel') }}" method="post" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            @if(Session::has('message'))
-                <p>{{ Session::get('message') }}</p>
-            @endif
-
-            <input type="file" name="filePoint_sale" id="">
-            <button>Importar r point</button>
-        </form>
-
+        <h2>Listado de circuitos</h2>
+        <a href="{{ route('zonas.create') }}" class="btn btn-success pull-right">Nuevo circuito</a>
         
 
         <br>
@@ -58,7 +25,7 @@
         
             <thead>            
                 <tr>
-                    @foreach($CAMPOS_BASICOS as $key => $value)            
+                    @foreach($CAMPOS_CIRCUITO as $key => $value)            
                         <th width="20"><?php echo $value; ?></th>
                     @endforeach
                     <th width="20">Acciones</th>
@@ -66,18 +33,19 @@
             </thead>
             <tbody>
                 
-                @foreach($puntos as $punto)
+                @foreach($circuitos as $circuito)
                     <tr>
-                        <td>{{ $punto->id }}</td>
-                        <td>{{ $punto->name }}</td>
+                        <td>{{ $circuito->id }}</td>
+                        <td>{{ $circuito->name }}</td>
+
                         <td>
                             <div class="row">
                                 <div class="col-md-4">
-                                <a href="{{ route('punto.show', $punto->id) }}" class="btn btn-link"><i class="fa fa-eye"></i></a>
+                                <a href="{{ route('circuito.show', $circuito->id) }}" class="btn btn-link"><i class="fa fa-eye"></i></a>
 
                                 </div>
                                 <div class="col-md-4">
-                                <form action="{{ route('punto.destroy', $punto->id) }}" method="POST">
+                                <form action="" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button class="btn btn-link"><i class="fa fa-fw fa-remove"></i></button>

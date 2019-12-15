@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         //$this->call(AuditsTableSeeder::class);
         $this->call(CircuitsTableSeeder::class);
 
-        $this->call(Point_salesTableSeeder::class);
+        //$this->call(Point_salesTableSeeder::class);
 
 
     }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Point_sale;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\Point_salesImport;
+use App\Imports\CircuitsImport;
+
 use App\Circuit;
 use App\User;
 class PointSaleController extends Controller
@@ -106,6 +108,7 @@ class PointSaleController extends Controller
     public function importPoint_salesExcel(Request $request)
     {
         $file = $request->file('filePoint_sale');
+        Excel::import(new CircuitsImport, $file);
         Excel::import(new Point_salesImport, $file);
 
         return back()->with('message', 'Importacion de r point completada ');

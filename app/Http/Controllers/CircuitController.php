@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Circuit;
 use Illuminate\Http\Request;
+use App\User;
+use Exception;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\CircuitsImport;
 
 class CircuitController extends Controller
 {
@@ -14,7 +18,13 @@ class CircuitController extends Controller
      */
     public function index()
     { 
-        return "Todos los circuitos";
+        $circuitos = Circuit::all();
+        $CAMPOS_CIRCUITO = array(
+            'id' => 'id',
+            'name' => 'name',
+        );
+
+        return view('user.show_circuits', compact('circuitos', 'CAMPOS_CIRCUITO'));
     }
 
     /**
@@ -44,9 +54,38 @@ class CircuitController extends Controller
      * @param  \App\Circuit  $circuit
      * @return \Illuminate\Http\Response
      */
-    public function show(Circuit $circuit)
+    public function show(Circuit $circuit, $id)
     {
-        //
+        $circuito = Circuit::find($id);
+        //return $zona->user_id;
+        /*try{
+            $supervisor = User::where('id', $zona->user_id)->first()->nombre;
+        }catch(Exception $e){
+            $supervisor = "No tiene";
+        }*/
+        //tengo que obtener los supervisores y las zonas asociadas a este circuito 
+        //return $supervisor->nombre;
+        $asesor_pda = "No tiene";
+        $asesor_pdv = "No tiene";
+        try{
+            $asesores = $circuito->users;
+            //return count($asesores);
+            //return $asesores[1];
+            
+            for($i=0; $i<count($asesores); $i++){
+                if($asesores[$i]->rol_id == 5){
+                    $asesor_pda = $asesores[$i]->nombre;
+                }elseif($asesores[$i]->rol_id == 6){
+                    $asesor_pdv = $asesores[$i]->nombre;
+                }
+            }
+            
+        }catch(Exception $e){
+            
+        }
+        
+        //return $asesor_pdv->nombre;
+        return view('user.show_circuit', compact(['circuito', 'asesor_pdv', 'asesor_pda']));
     }
 
     /**
@@ -55,9 +94,38 @@ class CircuitController extends Controller
      * @param  \App\Circuit  $circuit
      * @return \Illuminate\Http\Response
      */
-    public function edit(Circuit $circuit)
+    public function edit(Circuit $circuit, $id)
     {
-        //
+        $circuito = Circuit::find($id);
+        $asesor_pda = "No tiene";
+        $asesor_pdv = "No tiene";
+        try{
+            $asesores = $circuito->users;
+            
+            //return count($asesores);
+            //return $asesores[1];
+            
+            for($i=0; $i<count($asesores); $i++){
+                if($asesores[$i]->rol_id == 5){
+                    $asesor_pda = $asesores[$i]->nombre;
+                }elseif($asesores[$i]->rol_id == 6){
+                    $asesor_pdv = $asesores[$i]->nombre;
+                }
+            }
+        }catch(Exception $e){
+            
+
+        }
+        
+        
+        
+        $id_de_los_asesores_pda = 5;
+        $asesores_pda = User::where('rol_id', $id_de_los_asesores_pda)->get();
+
+        $id_de_los_asesores_pdv = 6;
+        $asesores_pdv = User::where('rol_id', $id_de_los_asesores_pdv)->get();
+
+        return view('user.edit_circuit', compact(['circuito', 'asesor_pdv', 'asesor_pda', 'asesores_pdv', 'asesores_pda']));
     }
 
     /**
@@ -67,9 +135,14 @@ class CircuitController extends Controller
      * @param  \App\Circuit  $circuit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Circuit $circuit)
+    public function update(Request $request, Circuit $circuit, $id)
     {
-        //
+        $circuito = Circuit::findOrFail($id);
+        //Falta poder actualizar bieeeeeeeeeeeeeeeeeeeeen
+        $circuito->users()->sync(5);
+        //$circuito->users()->sync(2);
+        return "hola";
+
     }
 
     /**
@@ -81,5 +154,12 @@ class CircuitController extends Controller
     public function destroy(Circuit $circuit)
     {
         //
+    }
+
+    public function importCircuitsExcel(Request $request){
+        $file = $request->file('fileCircuits');
+        Excel::import(new CircuitsImport, $file);
+
+        return back()->with('message', 'Importacion de r point completada ');
     }
 }

@@ -35,6 +35,8 @@ Route::post('roles.excel', 'RolController@importRolsExcel')->name('rols.import.e
 Route::post('users.excel', 'UserController@importUsersExcel')->name('users.import.excel');
 
 Route::post('point_sales.excel', 'PointSaleController@importPoint_salesExcel')->name('point_sales.import.excel');
+Route::post('circuits.excel', 'CircuitController@importCircuitsExcel')->name('circuits.import.excel');
+
  
 
 //para la administracion
@@ -70,7 +72,12 @@ Route::post('zonas/{id}', 'ZoneController@update_zone')->name('zone.update');
 
 
 
-Route::resource('circuitos', 'CircuitController');
+Route::resource('circuito', 'CircuitController');
+
+
+Route::get('/cargar_archivos', function () {
+    return view('user.upload_files');
+});
 
 
 

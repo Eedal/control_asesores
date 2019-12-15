@@ -10,7 +10,22 @@ class Point_sale extends Model
 
     protected $fillable = [
         'id', 
-        'name', 
+        'code',
+        'name',
+        'status',
+        'channel',
+        'type',
+        'phone',
+        'cell_phone',
+        'owner',
+        'document_type',
+        'document',
+        'schedule',
+        'department',
+        'city',
+        'neighborhood',
+        'address',
+        'circuit',
         'circuit_id'
     ];
 

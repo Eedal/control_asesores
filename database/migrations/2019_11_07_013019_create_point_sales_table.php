@@ -17,10 +17,31 @@ class CreatePointSalesTable extends Migration
             $table->engine = 'InnoDB';
             
             $table->bigIncrements('id');
-            $table->string('name')->unique();
+            $table->integer('code')->nullable();
+            $table->string('name')->nullable();
+            $table->string('status')->nullable();
+            $table->string('channel')->nullable();
+            $table->string('type')->nullable();
+            $table->bigInteger('phone')->nullable();
+            $table->bigInteger('cell_phone')->nullable();
+            $table->string('owner')->nullable();
+            $table->string('document_type')->nullable();
+            $table->string('document')->nullable();
+            $table->string('schedule')->nullable();
+            $table->string('department')->nullable();
+            $table->string('city')->nullable();
+            $table->string('neighborhood')->nullable();
+            $table->string('address')->nullable();
 
-            $table->unsignedBigInteger('circuit_id');
-            $table->foreign('circuit_id')->references('id')->on('circuits');
+            
+
+
+
+
+            $table->string('circuit')->nullable();
+
+            $table->unsignedBigInteger('circuit_id')->nullable();
+            $table->foreign('circuit_id')->references('id')->on('circuits')->nullable();
 
             $table->timestamps();
         });

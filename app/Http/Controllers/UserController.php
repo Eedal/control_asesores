@@ -8,6 +8,7 @@ use App\Imports\UsersImport;
 use App\User;
 use App\Zone;
 use App\Rol;
+use App\Circuit;
 use Exception;
 use DB;
 class UserController extends Controller
@@ -19,6 +20,27 @@ class UserController extends Controller
      */
     public function index()
     {
+        $array = array("CBHX2","CBHO2","CBHW1","CBHO4","CBHO1","CBHC1", "CBHX1","CBHF1","CBHO3");
+        $id = array();
+        $circuitos = Circuit::all();
+        foreach($array as $circuito){
+            echo Circuit::where('name', $circuito)->first()->id . "<br>";
+            array_push($id, Circuit::where('name', $circuito)->first()->id);
+        }
+
+        foreach($id as $i){
+            echo $i."<br>";
+        }
+        
+        //dd($array);
+
+        //$usuario = User::find(5);
+        //$usuario->circuits()->attach(1); //para crear una relacion de el usuario con el circuitro
+        //$usuario->circuits()->sync(2);
+        //dd($usuario->circuits);
+        //$circuito = Circuit::find(1);
+
+        //dd($circuito->users);
         return view('user.index');
     }
 
