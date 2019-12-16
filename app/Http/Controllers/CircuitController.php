@@ -137,9 +137,17 @@ class CircuitController extends Controller
      */
     public function update(Request $request, Circuit $circuit, $id)
     {
-        $circuito = Circuit::findOrFail($id);
+        $circuito = Circuit::find($id);
+        $circuito->users()->attach($request->asesor_pda);
+        $circuito->users()->sync($request->asesor_pdv);
+        //$circuito->users()->attach($request->asesor_pdv);
+        //return $request->asesor_pda . "<br>" . $request->asesor_pdv;
+
+        
+
+        
         //Falta poder actualizar bieeeeeeeeeeeeeeeeeeeeen
-        $circuito->users()->sync(5);
+        //$circuito->users()->attach(3);
         //$circuito->users()->sync(2);
         return "hola";
 
