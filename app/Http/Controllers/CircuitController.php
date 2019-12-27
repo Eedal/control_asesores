@@ -138,17 +138,50 @@ class CircuitController extends Controller
     public function update(Request $request, Circuit $circuit, $id)
     {
         $circuito = Circuit::find($id);
-        $circuito->users()->attach($request->asesor_pda);
-        $circuito->users()->sync($request->asesor_pdv);
+        //$tamaño =$circuit->count();
+
+        $datos = array();
+        array_push($datos, $request->asesor_pdv);
+        array_push($datos, $request->asesor_pda);
+
+        //dd($circuito->users[0]->nombre);
+        //dd($circuito->users);
+        //dd($circuito->users()->nombre);
+        //return User::first()->rol;
+      //  $circuito->users()->detach();
+        //$circuito->users()->attach();
+
+    //$circuito->users()->attach($request->asesor_pdv);
+
+        /*foreach($circuito->users as $cir){
+            $circuito->users()->attach($request->asesor_pdv);
+            //  dd($cir->rol->nombre);
+
+        }*/
+        $circuito->users()->sync($datos);
+
+        return "hola";
+        $circuito->users()->sync($request['asesor_pdv'], false);
+        //$circuito->users()->sync($request->asesor_pda, false);
         //$circuito->users()->attach($request->asesor_pdv);
         //return $request->asesor_pda . "<br>" . $request->asesor_pdv;
-
-        
+        //$registrosActuales = $circuito->users()->pluck('cedula', 'usuario')->toArray();
+        //print_r($circuito->users());
+    
+    
+        //$circuito->users()->sync($request->input('asesor_pdv', []));
 
         
         //Falta poder actualizar bieeeeeeeeeeeeeeeeeeeeen
         //$circuito->users()->attach(3);
-        //$circuito->users()->sync(2);
+        //return $request->asesor_pdv;
+        //return $request['asesor_pdv'];
+        print_r($request->asesor_pdv);
+        print_r($request->asesor_pda);
+        //$attributes = ['circuit_id' => $id, 'user_id' => $request->asesor_pdv];
+        //$circuito->users()->updateExistingPivot($request['asesor_pdv'], $attributes);
+        //$circuito->users()->updateExistingPivot($request['asesor_pda'], ['user_id' => 2]);
+
         return "hola";
 
     }

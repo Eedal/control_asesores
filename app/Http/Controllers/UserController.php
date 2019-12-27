@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $array = array("CBHX2","CBHO2","CBHW1","CBHO4","CBHO1","CBHC1", "CBHX1","CBHF1","CBHO3");
+        /*$array = array("CBHX2","CBHO2","CBHW1","CBHO4","CBHO1","CBHC1", "CBHX1","CBHF1","CBHO3");
         $id = array();
         $circuitos = Circuit::all();
         foreach($array as $circuito){
@@ -30,7 +30,7 @@ class UserController extends Controller
 
         foreach($id as $i){
             echo $i."<br>";
-        }
+        }*/
         
         //dd($array);
 
